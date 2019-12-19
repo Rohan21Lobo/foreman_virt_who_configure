@@ -84,7 +84,7 @@ verify_minimal_version() {
 
 result_code=#{error_code(:success)}
 step 1 "Installing virt-who"
-yum install -y virt-who || result_code=$(($result_code|#{error_code(:virt_who_installation)}))
+yum --disableplugin foreman-protector install -y virt-who || result_code=$(($result_code|#{error_code(:virt_who_installation)}))
 
 if verify_minimal_version; then
   step 2 "Encrypting password"
